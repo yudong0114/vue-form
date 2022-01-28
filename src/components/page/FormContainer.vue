@@ -1,5 +1,6 @@
 <script>
 import Form from '@/components/page/Form.vue';
+import { emptyCheck } from '@/functions/validation';
 
 const connect = (Presenter) => {
   return {
@@ -18,20 +19,12 @@ const connect = (Presenter) => {
     },
     watch: {
       'formData.name': function () {
-        // 入力項目が未入力
-        if (this.formData.name.length === 0) {
-          this.formValidation.name = ['nameが入力欄が空です。'];
-        } else {
-          this.formValidation.name = [];
-        }
+        const nameFormValidation = [emptyCheck('name', this.formData.name)];
+        this.formValidation.name = nameFormValidation.filter(Boolean);
       },
       'formData.email': function () {
-        // 入力項目が未入力
-        if (this.formData.email.length === 0) {
-          this.formValidation.email = ['emailが入力欄が空です。'];
-        } else {
-          this.formValidation.email = [];
-        }
+        const emailFormValidation = [emptyCheck('email', this.formData.email)];
+        this.formValidation.email = emailFormValidation.filter(Boolean);
       },
     },
     computed: {
@@ -47,12 +40,8 @@ const connect = (Presenter) => {
       },
       submit() {
         Object.keys(this.formData).map((formDataKey) => {
-          // 入力項目が未入力
-          if (this.formData[formDataKey].length === 0) {
-            this.formValidation[formDataKey] = [`${formDataKey}入力欄が空です。`];
-          } else {
-            this.formValidation[formDataKey] = [];
-          }
+          const thisFormValidation = [emptyCheck(formDataKey, this.formData[formDataKey])];
+          this.formValidation[formDataKey] = thisFormValidation.filter(Boolean);
         });
         if (this.isSubmit) {
           alert(`nameは${this.formData.name}\nemalは${this.formData.email}`);
