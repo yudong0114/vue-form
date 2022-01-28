@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Form from '@/components/page/Form.vue';
+import Form from '@/components/page/FormContainer.vue';
 
 Vue.use(VueRouter);
 

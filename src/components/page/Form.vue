@@ -1,16 +1,11 @@
 <template>
   <div class="form">
     <h1>Vue Form</h1>
-    <InputItem
-      itemName="名前"
-      itemId="name"
-      :itemValue="formData.name"
-      @updateFormData="updateFormData"
-    />
+    <InputItem itemName="名前" itemId="name" :itemValue="name" @updateFormData="updateFormData" />
     <InputItem
       itemName="メールアドレス"
       itemId="email"
-      :itemValue="formData.email"
+      :itemValue="email"
       @updateFormData="updateFormData"
     />
     <Button buttonLabel="フォームを送信" @btnEmit="submit" />
@@ -33,20 +28,22 @@ export default {
     InputItem,
     Button,
   },
-  data() {
-    return {
-      formData: {
-        name: '',
-        email: '',
-      },
-    };
-  },
-  methods: {
-    updateFormData(key, value) {
-      this.formData[key] = value;
+  props: {
+    name: {
+      type: String,
+      default: '',
     },
-    submit() {
-      alert(`nameは${this.formData.name}\nemalは${this.formData.email}`);
+    email: {
+      type: String,
+      default: '',
+    },
+    updateFormData: {
+      type: Function,
+      default: () => {},
+    },
+    submit: {
+      type: Function,
+      default: () => {},
     },
   },
 };
