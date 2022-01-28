@@ -1,14 +1,29 @@
 <template>
   <div class="form">
     <h1>Vue Form</h1>
-    <InputItem itemName="名前" itemId="name" :itemValue="name" @updateFormData="updateFormData" />
+    <InputItem
+      itemName="名前"
+      itemId="name"
+      :itemValue="formData.name"
+      @updateFormData="updateFormData"
+    />
+    <ErrorMessage
+      v-for="(errorMessage, index) in formValidation.name"
+      :errorMessage="errorMessage"
+      :key="`name${index}`"
+    />
     <InputItem
       itemName="メールアドレス"
       itemId="email"
-      :itemValue="email"
+      :itemValue="formData.email"
       @updateFormData="updateFormData"
     />
-    <Button buttonLabel="フォームを送信" @btnEmit="submit" />
+    <ErrorMessage
+      v-for="(errorMessage, index) in formValidation.email"
+      :errorMessage="errorMessage"
+      :key="`email${index}`"
+    />
+    <Button buttonLabel="フォームを送信" :disabled="!isSubmit" @btnEmit="submit" />
   </div>
 </template>
 <style lang="scss" scoped>
@@ -20,22 +35,34 @@
 </style>
 <script>
 import InputItem from '@/components/organism/InputItem.vue';
+import ErrorMessage from '@/components/atom/ErrorMessage.vue';
 import Button from '@/components/atom/Button.vue';
 
 export default {
   name: 'Form',
   components: {
     InputItem,
+    ErrorMessage,
     Button,
   },
   props: {
-    name: {
-      type: String,
-      default: '',
+    formData: {
+      type: Object,
+      default: () => ({
+        name: '',
+        email: '',
+      }),
     },
-    email: {
-      type: String,
-      default: '',
+    formValidation: {
+      type: Object,
+      default: () => ({
+        name: [],
+        email: [],
+      }),
+    },
+    isSubmit: {
+      type: Boolean,
+      default: false,
     },
     updateFormData: {
       type: Function,
