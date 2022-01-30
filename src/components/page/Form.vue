@@ -48,6 +48,7 @@ export default {
   props: {
     formData: {
       type: Object,
+      required: true,
       default: () => ({
         name: '',
         email: '',
@@ -55,6 +56,7 @@ export default {
     },
     formValidation: {
       type: Object,
+      required: true,
       default: () => ({
         name: [],
         email: [],
@@ -62,14 +64,17 @@ export default {
     },
     isSubmit: {
       type: Boolean,
+      required: true,
       default: false,
     },
     updateFormData: {
       type: Function,
+      required: true,
       default: () => {},
     },
     submit: {
       type: Function,
+      required: true,
       default: () => {},
     },
   },
