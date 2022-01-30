@@ -1,6 +1,6 @@
 <script>
 import Form from '@/components/page/Form.vue';
-import { emptyCheck } from '@/functions/validation';
+import { inputEmptyCheck } from '@/functions/validation';
 
 const connect = (Presenter) => {
   return {
@@ -19,11 +19,11 @@ const connect = (Presenter) => {
     },
     watch: {
       'formData.name': function () {
-        const nameFormValidation = [emptyCheck('name', this.formData.name)];
+        const nameFormValidation = [inputEmptyCheck('name', this.formData.name)];
         this.formValidation.name = nameFormValidation.filter(Boolean);
       },
       'formData.email': function () {
-        const emailFormValidation = [emptyCheck('email', this.formData.email)];
+        const emailFormValidation = [inputEmptyCheck('email', this.formData.email)];
         this.formValidation.email = emailFormValidation.filter(Boolean);
       },
     },
@@ -40,7 +40,7 @@ const connect = (Presenter) => {
       },
       submit() {
         Object.keys(this.formData).map((formDataKey) => {
-          const thisFormValidation = [emptyCheck(formDataKey, this.formData[formDataKey])];
+          const thisFormValidation = [inputEmptyCheck(formDataKey, this.formData[formDataKey])];
           this.formValidation[formDataKey] = thisFormValidation.filter(Boolean);
         });
         if (this.isSubmit) {

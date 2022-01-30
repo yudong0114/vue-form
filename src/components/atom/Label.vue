@@ -1,17 +1,17 @@
 <template>
-  <label for="for">{{ name }}</label>
+  <label :for="labelFor">{{ labelName }}</label>
 </template>
 
 <script>
 export default {
   name: 'Label',
   props: {
-    for: {
+    labelFor: {
       type: String,
       required: true,
       default: '',
     },
-    name: {
+    labelName: {
       type: String,
       required: true,
       default: '',

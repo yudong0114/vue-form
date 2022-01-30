@@ -1,6 +1,6 @@
 <template>
   <dl class="inputItem">
-    <dt><Label :for="itemId" :name="itemName" /></dt>
+    <dt><Label :labelFor="itemId" :labelName="itemName" /></dt>
     <dd><Input :value="itemValue" @input="update" /></dd>
   </dl>
 </template>
