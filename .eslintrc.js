@@ -3,7 +3,12 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier'],
+  extends: [
+    'plugin:vue/essential',
+    'eslint:recommended',
+    '@vue/prettier',
+    'plugin:storybook/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 2020,
   },
@@ -13,7 +18,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
+      files: ['**/tests/unit/**/*.spec.{j,t}s?(x)'],
       env: {
         jest: true,
       },

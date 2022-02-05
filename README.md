@@ -1,6 +1,7 @@
 # vue-form
 
 - Atomic Design + Container & Presentational Component で Vue でフォームを作成する
+- Storybook を追加
 
 ## Project setup
 
