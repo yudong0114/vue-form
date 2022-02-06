@@ -5,7 +5,14 @@ export default {
   component: Button,
 };
 
-export const Default = () => ({
+const Template = (_args, { argTypes }) => ({
+  props: Object.keys(argTypes),
   components: { Button },
-  template: '<Button buttonLabel="Button" />',
+  template: '<Button v-bind="$props"/>',
 });
+
+export const Default = Template.bind({});
+
+Default.args = {
+  buttonLabel: 'Button',
+};

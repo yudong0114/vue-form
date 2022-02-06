@@ -5,7 +5,14 @@ export default {
   component: ErrorMessage,
 };
 
-export const Default = () => ({
+const Template = (_args, { argTypes }) => ({
+  props: Object.keys(argTypes),
   components: { ErrorMessage },
-  template: '<ErrorMessage errorMessage="エラーメッセージ" />',
+  template: '<ErrorMessage v-bind="$props"/>',
 });
+
+export const Default = Template.bind({});
+
+Default.args = {
+  errorMessage: 'エラーメッセージ',
+};

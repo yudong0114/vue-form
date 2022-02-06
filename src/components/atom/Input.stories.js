@@ -5,7 +5,14 @@ export default {
   component: Input,
 };
 
-export const Default = () => ({
+const Template = (_args, { argTypes }) => ({
+  props: Object.keys(argTypes),
   components: { Input },
-  template: '<Input value="テキスト" />',
+  template: '<Input v-bind="$props"/>',
 });
+
+export const Default = Template.bind({});
+
+Default.args = {
+  value: 'テキスト',
+};
