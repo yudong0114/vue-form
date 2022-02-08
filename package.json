@@ -8,7 +8,8 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true"
   },
   "dependencies": {
     "vue": "^2.6.11",
@@ -18,6 +19,7 @@
     "@babel/core": "^7.17.0",
     "@storybook/addon-actions": "^6.4.18",
     "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/addon-jest": "^6.4.18",
     "@storybook/addon-links": "^6.4.18",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/vue": "^6.4.18",
