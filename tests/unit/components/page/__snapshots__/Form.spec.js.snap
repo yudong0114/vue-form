@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@/components/page/Form.vue スナップショットテスト 1`] = `
+<div
+  class="form"
+>
+  <h1>
+    Vue Form
+  </h1>
+   
+  <inputitem-stub
+    itemid="name"
+    itemname="名前"
+    itemvalue=""
+  />
+    
+  <inputitem-stub
+    itemid="email"
+    itemname="メールアドレス"
+    itemvalue=""
+  />
+    
+  <button-stub
+    buttonlabel="フォームを送信"
+  />
+</div>
+`;

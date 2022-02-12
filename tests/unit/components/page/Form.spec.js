@@ -2,6 +2,24 @@ import { shallowMount } from '@vue/test-utils';
 import Form from '@/components/page/Form.vue';
 
 describe('@/components/page/Form.vue', () => {
+  it('スナップショットテスト', () => {
+    const wrapper = shallowMount(Form, {
+      propsData: {
+        formData: {
+          name: '',
+          email: '',
+        },
+        formValidation: {
+          name: [],
+          email: [],
+        },
+        isSubmit: true,
+        updateFormData: () => {},
+        submit: () => {},
+      },
+    });
+    expect(wrapper.element).toMatchSnapshot();
+  });
   it('Props設定時のコンポーネントの状態', () => {
     const wrapper = shallowMount(Form, {
       propsData: {
